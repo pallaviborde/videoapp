@@ -1,0 +1,94 @@
+<h1>Welcome to video app demo!!</h1>
+<body>
+
+
+
+
+<%= form_tag(videos_search_path, method: :get) do %>
+    <%= text_field_tag :search, params[:search], placeholder: "Search by description" %>
+    <%= submit_tag 'Search by desciption', name: nil %>
+<% end %>
+
+<div>
+
+  <% if !@hwapps.nil?%>
+  <h3>Search found</h3>
+  <table>
+    <tr>
+
+      <% i = 0 %>
+
+      <% @hwapps.each do |hwapp| %>
+          <% if i % 4 == 0 %>
+            <tr>
+        <% end %>
+        <td>
+
+          <p>
+            <video width="180" height="180" controls="controls">
+              <source src=<%= "/assets/#{hwapp.vidname}" %> >
+              Your browser does not support the video tag.
+            </video></p>
+          <%= "#{hwapp.desc}" %>
+
+        </td>
+
+        <% i = i + 1 %>
+    <% end %>
+<% else %>
+    </tr>
+  </table>
+
+   <h3>Recommended</h3>
+   <table>
+     <tr>
+       <% i = 0 %>
+
+       <% @hwappsViews.each do |hwappv| %>
+           <% if i % 4 == 0 %>
+             <tr>
+         <% end %>
+         <td>
+
+           <p>
+             <video width="180" height="180" controls="controls">
+               <source src=<%= "/assets/#{hwappv.vidname}" %> >
+               Your browser does not support the video tag.
+             </video></p>
+           <%= "Views #{hwappv.views}" %>
+
+         </td>
+
+         <% i = i + 1 %>
+     <% end %>
+
+     </tr>
+   </table>
+
+   <h3>Most liked</h3>
+   <table>
+     <tr>
+       <% i = 0 %>
+
+       <% @hwappsLikes.each do |hwappl| %>
+           <% if i % 4 == 0 %>
+             <tr>
+         <% end %>
+         <td>
+
+           <p>
+             <video width="180" height="180" controls="controls">
+               <source src=<%= "/assets/#{hwappl.vidname}" %> >
+               Your browser does not support the video tag.
+             </video></p>
+           <%= "Likes #{hwappl.likes}" %>
+
+         </td>
+
+         <% i = i + 1 %>
+     <% end %>
+<% end %>
+     </tr>
+   </table>
+ </div>
+</body>

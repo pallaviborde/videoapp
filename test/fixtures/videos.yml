@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  videoname: MyString
+  path: MyString
+  description: MyString
+  views: 1
+  likes: 1
+
+two:
+  videoname: MyString
+  path: MyString
+  description: MyString
+  views: 1
+  likes: 1
